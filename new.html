@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <title>Tugas Besar</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        border: 0;
+        text-decoration: none;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #000000;
+        color: #fff;
+
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 7%;
+        background-color: rgb(1, 1, 1, 0.8);
+        border-bottom: 1px solid #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+    }
+
+    .navbar .navbar-logo {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #fff;
+        font-style: italic;
+    }
+
+    .navbar .navbar-logo span {
+        color: #6b0707;
+    }
+
+    .navbar .navbar-nav a {
+        color: #fff;
+        display: inline-block;
+        font-size: 1.3rem;
+        margin: 0 1rem;
+    }
+
+    .navbar .navbar-nav a:hover {
+        color: #6b0707;
+    }
+
+    .navbar .navbar-nav a::after {
+        content: '';
+        display: block;
+        padding-bottom: 0.5rem;
+        border-bottom: 0.1rem solid #fff;
+        transform: scaleX(0);
+        transition: 0.2s linear;
+    }
+
+    .navbar .navbar-nav a:hover::after {
+        transform: scaleX(0.5);
+    }
+
+    .navbar .navbar-extra a {
+        color: #fff;
+        margin: 0 0.5rem;
+    }
+
+    .navbar .navbar-extra a:hover {
+        color: #6b0707;
+    }
+
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background-image: url("music.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    .hero::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0deg, rgba(1, 1, 3, 3)3%, rgba(255, 255, 255, 0)25%);
+    }
+
+    .hero .content {
+        padding: 1.4rem 7%;
+        max-width: 60rem;
+    }
+
+    .hero .content h1 {
+        font-size: 3rem;
+        color: #fff;
+        text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+        line-height: 1.2;
+    }
+
+    .hero .content h1 span {
+        color: #6b0707;
+    }
+
+    .hero .content p {
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+        line-height: 1.4rem;
+        font-weight: 100;
+        text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+    }
+
+    .about,
+    .kontak,
+    .history,
+    .album {
+        padding: 10rem 7% 1.4rem;
+    }
+
+    .about h2,
+    .kontak h2,
+    .history h2,
+    .album h2{
+        text-align: center;
+        font-size: 2.6rem;
+        margin-bottom: 2rem;
+    }
+
+    .about h2 span,
+    .kontak h2 span,
+    .history h2 span,
+    .album h2 span {
+        color: #6b0707;
+    }
+
+    .about .row {
+        display: flex;
+    }
+
+    .about .row .about-img {
+        flex: 1 1 45rem;
+    }
+
+    .about .row .about-img img {
+        width: 100%;
+    }
+
+    .about .row .content {
+        flex: 1 1 35rem;
+        padding: 0 1rem;
+
+    }
+
+    .about .content h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .about .row .content p {
+        margin-bottom: 0.8rem;
+        font-size: 1rem;
+        font-weight: 200;
+        line-height: 1.6;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    th,
+    td {
+        border: 1px solid #ffffff;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #1a1a1a;
+    }
+
+    td {
+        background-color: #333333;
+    }
+
+    .menu h2 {
+        margin-bottom: 1rem;
+    }
+
+    .history .row {
+        display: flex;
+        gap: 20px;
+    }
+
+    .history .row .gambar-karir {
+       flex: 1 1 20rem;
+    }
+
+    .history .row .gambar-karir img {
+        width: 300px;
+        height: auto;
+    }
+
+    .history .row .content {
+        flex: 1 1 35rem;
+        padding: 0 1rem;
+        text-align: center;
+    }
+
+    .history .content h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .history .row .content p {
+        margin-bottom: 0.8rem;
+        font-size: 1rem;
+        font-weight: 200;
+        line-height: 1.6;
+    }
+
+    .album .row {
+        display: flex;
+        gap: 20px;
+    }
+
+    .album .row .gambar p{
+      font-size: 2rem;
+      text-align: center;
+      font-weight: 300;  
+    }
+
+    .album .row .isi {
+        flex: 1 1 35rem;
+        padding: 0 1rem;
+        text-align: center;
+    }
+
+    .album .row .isi p {
+        margin-bottom: 0.8rem;
+        font-size: 1.3rem;
+        font-weight: 300;
+        line-height: 1.6;
+    }
+    
+   
+    .album .video {
+        margin-top: 2rem;
+        text-align: center; /* Memastikan konten di dalam div video berada di tengah */
+    }
+
+    .album .video h3{
+        margin-top: 2rem;
+    }
+
+    .album .video .ifream {
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(221, 5, 5, 0.1);
+        display: block; /* Menghilangkan jarak di bawah iframe */
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .contact-section {
+        background-color: #1a1a1a;
+        /* Warna latar belakang gelap */
+        padding: 30px;
+        /* Menambah padding untuk ruang yang lebih banyak */
+        width: 100%;
+        /* Mengatur lebar menjadi 100% */
+        max-width: 800px;
+        /* Memperbesar lebar maksimum */
+        margin: 50px auto;
+        /* Margin tetap untuk penempatan di tengah */
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        /* Bayangan lebih gelap */
+    }
+
+    .contact-section h2 {
+        text-align: center;
+        color: #fff;
+        /* Warna teks putih */
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        /* Menambah jarak antar elemen form */
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #fff;
+        /* Warna label putih */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 12px;
+        /* Menambah padding untuk input yang lebih besar */
+        border: 1px solid #ccc;
+        /* Border tetap sama */
+        border-radius: 4px;
+        background-color: #333;
+        /* Latar belakang input gelap */
+        color: #fff;
+        /* Teks input putih */
+    }
+
+    input[type="text"]::placeholder,
+    input[type="email"]::placeholder,
+    textarea::placeholder {
+        color: #aaa;
+        /* Placeholder lebih terang */
+    }
+
+    button {
+        background-color: #6b0707;
+        /* Warna tombol sesuai tema */
+        color: white;
+        padding: 12px 15px;
+        /* Menambah padding untuk tombol yang lebih besar */
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    button:hover {
+        background-color: #4cae4c;
+        /* Warna hover tombol */
+    }
+
+    .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.3s;
+    }
+
+    .popup {
+        background-color: #fff;
+        color: #333;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .popup h2 {
+        margin: 0 0 10px;
+        font-size: 20px;
+    }
+
+    .popup button {
+        background-color: #6b0707;
+        color: #fff;
+        padding: 8px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .popup button:hover {
+        background-color: #a10a0a;
+    }
+
+    /* Menampilkan pop-up */
+    .popup-overlay.show {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .social-media {
+        background-color: #1a1a1a;
+        padding: 2rem 7%;
+        color: #fff;
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .social-media h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .social-media h2 span {
+        color: #6b0707;
+    }
+
+    .social-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .social-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .social-list a {
+        color: #fff;
+        font-size: 1.5rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: color 0.3s;
+    }
+
+    .social-list a:hover {
+        color: #6b0707;
+    }
+
+    footer {
+        background-color: #333333;
+        text-align: center;
+        padding: 10px 0;
+    }
+</style>
+
+<body>
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">Distorsi<span>Keras</span>.</a>
+        <div class="navbar-nav">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#history">History</a>
+            <a href="#album">Album</a>
+            <a href="#kontak">Kontak</a>
+        </div>
+        <div class="navbar-extra">
+            <a href="#" id="search"><i data-feather="search"></i></a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <main class="content">
+            <h1> Jejak Musik & Perjalanan <span>PERUNGGU</span></h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt deleniti veritatis repellendus quo soluta
+                neque beatae sequi eaque fugit velit aliquid accusamus, incidunt voluptate fuga necessitatibus itaque
+                earum distinctio nobis!</p>
+        </main>
+    </section>
+
+    <section id="about" class="about">
+        <h2>Siapa sih <span>Perunggu?</span></h2>
+        <div class="row">
+            <div class="about-img">
+                <img src="perunggu 2.jpg" alt="Tentang Kami">
+            </div>
+            <div class="content">
+                <h3>Perunggu</h3>
+                <p>Perunggu adalah band indie rock asal Indonesia yang dibentuk pada tahun 2019 oleh Maul IBrahim
+                    (vokal/gitar), Adam Adenan (bass), dan Ildo Hasman (drum). Band ini dikenal dengan musik rock
+                    alternatif yang
+                    intens serta lirik puitis yang membahas isu sosial dan kehidupan sehari-hari. Album debut mereka,
+                    <b>Memorandum</b> (2020), berhasil menarik perhatian melalui tema-tema emosional seperti perpisahan
+                    dan
+                    pencarian jati diri, dengan lagu-lagu seperti <b>"33x"</b> yang sukses mencuri hati para pendengar.
+                    Perunggu terus berkembang sebagai salah satu band indie Indonesia yang menjanjikan, terutama dengan
+                    penampilan live mereka yang penuh energi dan atmosfer yang mendalam.
+                </p>
+            </div>
+            <div class="band-info">
+                <table>
+                    <tr>
+                        <th>Nama Band</th>
+                        <td>Perunggu</td>
+                    </tr>
+                    <tr>
+                        <th>Asal</th>
+                        <td>Indonesia </td>
+                    </tr>
+                    <tr>
+                        <th>Genre</th>
+                        <td>Rock</td>
+                    </tr>
+                    <tr>
+                        <th>Tahun Berdiri</th>
+                        <td>2019</td>
+                    </tr>
+                    <tr>
+                        <th>Anggota</th>
+                        <td>Adam Adenan, Ildo Hasman, Maul Ibrahim</td>
+                    </tr>
+                    <tr>
+                        <th>Album</th>
+                        <td>Memorandum (2020)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="history" class="history">
+        <h2>Perjalanan <span>Musik</span> Perunggu?</h2>
+        <div class="row">
+            <div class="gambar-karir">
+                <img src="perunggu 3.jpg" alt="gambar-karir">
+            </div>
+            <div class="awal">
+                <p>Band Perunggu, asal Jakarta, didirikan pada tahun 2019 oleh Adam Adenan, Ildo Hasman, dan Maul
+                    Ibrahim. Awalnya, band ini terbentuk dari kegiatan santai para anggotanya yang bermain musik
+                    sepulang kerja. Mereka memutuskan serius berkarier di dunia musik tanpa meninggalkan pekerjaan utama
+                    mereka.
+
+                    Debut mereka dimulai dengan singel "Menyala" pada November 2019, diikuti "Jenuh Kan Kutelan" pada
+                    Januari 2020. Tahun yang sama, mereka merilis mini album Pendar. Album studio pertama mereka,
+                    Memorandum, dirilis pada Maret 2022, yang digarap dengan dedikasi tinggi selama masa pandemi. Album
+                    ini dihasilkan dari kolaborasi dengan produser dan musisi lain seperti Giovanni Rahmadeva dari Polka
+                    Wars dan gitaris ternama seperti Lafa Pratomo
+
+                    Dalam perjalanan musiknya, Perunggu dikenal dengan genre rock alternatif dan indie, serta lirik
+                    dalam bahasa Indonesia yang menggugah emosi. Musik mereka terus berkembang, dengan rilisan terbaru
+                    seperti "33x" di tahun 2023. Dedikasi mereka terhadap musik terlihat dalam cara mereka memanfaatkan
+                    waktu dan energi meski harus mengorbankan banyak hal untuk menghasilkan karya berkualitas​
+            </div>
+        </div>
+    </section>
+
+    <section id="album" class="album">
+        <h2>Alb<span>um</span></h2>
+        <div class="row">
+            <div class="gambar">
+                <img src="perunggu.jpg" alt="Album Memorandum" />
+                <p>Memorandum (2020)</p>
+            </div>
+            <div class="isi">
+                <p>
+                    "Memorandum" adalah album debut dari band <b>Perunggu</b> yang dirilis pada 11 Maret 2022 melalui
+                    Podium Records. Album ini menyuarakan kehidupan kelas pekerja urban tentang keresahan, perjuangan,
+                    dan dinamika hidup sehari-hari di kota besar, terutama dari sudut pandang kelas menengah.
+                </p>
+                <p>
+                    Album ini menyajikan 11 lagu dengan lirik yang merefleksikan isu-isu seperti <b>"hustle
+                    culture"</b>, kebosanan pekerjaan, dan ketidakpastian masa depan, tanpa menghakimi realita
+                    kehidupan. Lagu-lagu seperti <b>"Tarung Bebas", "Pastikan Riuh Akhiri Malammu", dan "Kalibata,
+                    2012"</b> memiliki tema yang mendalam, mulai dari perjuangan hingga harapan. Bahkan, "33x"
+                    menampilkan perspektif spiritual yang unik tentang hubungan manusia dalam kehidupan urban.
+                </p>
+            </div>
+        </div>
+        <div class="video">
+            <h3> Tonton Video : Tarung Bebas - Perunggu</h3>
+            <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/KgWA1jMkjDI?si=fypbIT4cjmFjqZW9" 
+                    title="Video YouTube" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+    </section>    
+
+    <section id="kontak" class="kontak">
+        <h2>Kontak <span>Kami</span> </h2>
+        <div class="contact-section">
+            <form id="contact">
+                <div class="form-group">
+                    <label for="name">Nama:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Pesan:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit">Kirim</button>
+            </form>
+        </div>
+        <div class="popup-overlay" id="popupOverlay">
+            <div class="popup">
+                <h2>Pesan Terkirim!</h2>
+                <p>Terima kasih, pesan Anda telah berhasil dikirim.</p>
+                <button id="closePopup">Tutup</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="social-media" class="social-media">
+        <h2>Temukan Kami di <span>Media Sosial</span></h2>
+        <ul class="social-list">
+            <li>
+                <a href="https://www.facebook.com/username" target="_blank" aria-label="Facebook">
+                    <i data-feather="facebook"></i>
+                    <span>Facebook</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x.com/perunggu__?t=SgVUCtbJCw1PvuNJ8hwj-w&s=09" target="_blank" aria-label="Twitter">
+                    <i data-feather="twitter"></i>
+                    <span>Twitter</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/username" target="_blank" aria-label="Instagram">
+                    <i data-feather="instagram"></i>
+                    <span>Instagram</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/username" target="_blank" aria-label="YouTube">
+                    <i data-feather="youtube"></i>
+                    <span>YouTube</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <footer>
+        <p>&copy; 2024 Ari Widi All rights reserved.</p>
+    </footer>
+
+    <script>
+
+        // slide navbar
+        document.querySelectorAll('.navbar-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Mencegah perilaku default tautan
+
+                const targetId = this.getAttribute('href'); // Mendapatkan ID target
+                const targetElement = document.querySelector(targetId); // Mencari elemen target
+
+                // Melakukan scroll ke elemen target dengan animasi
+                targetElement.scrollIntoView({
+                    behavior: 'smooth', // Efek scroll halus
+                    block: 'start' // Mengatur posisi scroll ke bagian atas elemen
+                });
+            });
+        });
+
+        // pop up
+        const form = document.getElementById("contact");
+        const popupOverlay = document.getElementById("popupOverlay");
+        const closePopup = document.getElementById("closePopup");
+
+        // Tampilkan pop-up saat form disubmit
+        form.addEventListener("submit", function (event) {
+            event.preventDefault(); // Mencegah submit form secara default
+            popupOverlay.classList.add("show"); // Menampilkan pop-up
+            form.reset(); // Mereset isi formulir
+        });
+
+        // Sembunyikan pop-up saat tombol "Tutup" diklik
+        closePopup.addEventListener("click", function () {
+            popupOverlay.classList.remove("show");
+        });
+
+        // icon
+        feather.replace();
+    </script>
+</body>
+
+</html>
